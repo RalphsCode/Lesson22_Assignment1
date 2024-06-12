@@ -13,7 +13,7 @@ def connect_db(app):
 
 # models go below
 
-class User(db.model):
+class User(db.Model):
         """Class for Users"""
 
         __tablename__ = 'users'
@@ -30,5 +30,4 @@ class User(db.model):
 
         image_url = db.Column(db.String(50),  # Create column to store the image URL
                      nullable=True)
-        
         

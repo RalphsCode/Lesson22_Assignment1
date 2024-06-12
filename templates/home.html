@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}
+Ralph's Blogly Home Page
+{% endblock %}
+
+{% block content %}
+<h1>Welcome to Ralph's Blogly</h1>
+<h2>Users</h2>
+<p>
+{% for user in users %}
+{{user.id}}, {{user.first_name}}, {{user.last_name}}<br>
+{% endfor %}
+</p>
+<form action="/new_user">
+<button id="btn_add_user" type="submit">Add User</button>
+</form>
+{% endblock %}
