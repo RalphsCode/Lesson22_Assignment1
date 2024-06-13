@@ -28,6 +28,7 @@ class User(db.Model):
         last_name = db.Column(db.String(50),  # Create name column
                      nullable=False)
 
-        image_url = db.Column(db.String(50),  # Create column to store the image URL
+        image_url = db.Column(db.String(250),  # Create column to store the image URL
+                     default='none',
                      nullable=True)
         
