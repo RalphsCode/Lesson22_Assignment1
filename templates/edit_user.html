@@ -5,14 +5,14 @@ Edit {{user.first_name}} {{user.last_name}}
 
 {% block content %}
 <h1>Edit {{user.first_name}} {{user.last_name}}</h1>
-<form action="/">
+<form action="/users/{{user.id}}/edit" method="POST">
     <label for="first_name">First Name</label><br>
     <input type="text" name="first_name" placeholder="{{user.first_name}}"><br>
     <label for="last_name">Last Name</label><br>
     <input type="text" name="last_name" placeholder="{{user.last_name}}"><br>
     <label for="image_url">Image URL</label><br>
-    <input type="text" name="image_URL" placeholder="{{user.image_url}}"><br><br>
-    <a href="/users/{{user_id}}" class="btn btn-primary">Cancel</a>
+    <input type="text" name="image_url" placeholder="{{user.image_url}}"><br><br>
+    <a href="/users/{{user.id}}" class="btn btn-primary">Cancel</a>
     <button type="submit" class="btn btn-primary">Update</button>
 </form>
 {% endblock %}
