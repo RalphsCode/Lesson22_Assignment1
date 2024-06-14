@@ -25,21 +25,30 @@ def users():
     users = User.query.all()
     return render_template('users.html', users=users)
 
-@app.route('/users/new')
+@app.route('/users/new', methods=['GET', 'POST'])
 def new_user():
-    return render_template('new_user.html')
-
-@app.route('/process_new_user', methods=['POST'])
-def process_new_user():
-    first = request.form['first_name']
-    last = request.form['last_name']
-    img_url = request.form['image_url']
-    new_user = User(first_name=first, last_name=last, image_url=img_url)
-    db.session.add(new_user)
-    db.session.commit()
-    return redirect('/users')
+    if request.method == 'GET':
+        # Display the new user form
+        return render_template('new_user.html')
+    else:
+        # Process the new user form
+        first = request.form['first_name']
+        last = request.form['last_name']
+        img_url = request.form['image_url']
+        new_user = User(first_name=first, last_name=last, image_url=img_url)
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect('/users')
 
 @app.route('/users/<int:user_id>')
 def user_detail(user_id):
     user = User.query.get_or_404(user_id)
     return render_template('user.html', user=user)
+
+@app.route('/users/<int:user_id>/edit', methods=['GET', 'POST'])
+def user_edit(user_id):
+    if request.method == 'GET':
+        user = User.query.get_or_404(user_id)
+        return render_template('edit_user.html', user=user)
+    else:
+        return render_template('edit_user.html', user_id=user_id)

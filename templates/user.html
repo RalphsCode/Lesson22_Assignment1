@@ -9,6 +9,8 @@
 <p>{{user.first_name}} {{user.last_name}}</p>
 <p>Image URL: {{user.image_url}}</p>
 <br>
+    <a href="/users/{{user.id}}/edit" class="btn btn-primary">Edit</a>
+    <a href="/users/{{user.id}}/delete" class="btn btn-warning">Delete</a>
 <p><a href="/users" >Go Back</a></p>
 
 {% endblock %}
